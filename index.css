@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+:root {
+  --bg-color: #90a9b7;
+  --primary-color: white;
+}
+body {
+  background-color: var(--bg-color);
+  animation: fadeInAnimation ease 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  display: flex;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+}
+.startCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 35vh;
+}
+.welcome {
+  text-transform: uppercase;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  font-size: 25px;
+  color: black;
+  margin: 20px;
+  text-align: center;
+}
+button {
+  background-color: white;
+  border: none;
+  padding: 10px;
+  color: black;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  transition: 0.8s;
+}
+#generateQuiz {
+  background-color: black;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+#generateQuiz:hover {
+  background-color: rgba(0, 0, 0, 0.88);
+  transition: 0.8s;
+}
+.selectCard {
+  padding: 20px;
+  margin-top: 18vh;
+  background-color: white;
+  width: 40%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.selectOptions {
+  margin: 10px 25px;
+  align-self: flex-start;
+}
+.selectCat {
+  margin: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInAnimation ease 1.2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+input {
+  border-radius: 4px;
+  border: 1.5px solid rgba(0, 0, 0, 0.527);
+  font-size: 12px;
+  outline: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  margin: 0px 5px;
+  width: 70%;
+}
+#name {
+  width: 78%;
+}
+select {
+  border-radius: 4px;
+  border: 1.5px solid rgba(0, 0, 0, 0.527);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  outline: none;
+  padding: 5px 10px;
+  margin: 0px 5px;
+  text-transform: uppercase;
+  width: 70%;
+}
+label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+h4 {
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.45);
+  text-align: center;
+  padding-bottom: 6px;
+}
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: black;
+  text-align: center;
+  padding: 14px;
+}
+.footer {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  font-weight: bolder;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+}
+.footer a {
+  text-decoration: none;
+  color: black;
+}
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

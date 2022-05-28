@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quizarea</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="startCard" id="startCard">
+      <span class="welcome">Welcome To Quizarea!</span>
+      <button onclick="selectCard()">Lets Start⚡</button>
+    </div>
+    <div class="selectCard" id="selectCard">
+      <h4>Create Quiz</h4>
+      <div class="selectOptions">
+        <div class="selectCat">
+          <label for="name"> Player Name </label>
+          <input type="text" required id="name" />
+        </div>
+      </div>
+      <div class="selectCat">
+        <label for="noOfQue"> No Of Question (1-50) </label>
+        <input type="number" required id="noOfQue" value="1" />
+      </div>
+      <div class="selectCat">
+        <label for="category"> Select Category </label>
+        <select name="category" required id="category"></select>
+      </div>
+      <div class="selectCat">
+        <label for="difficulty"> Select Difficulty </label>
+        <select name="difficulty" required id="difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+      <div class="selectCat">
+        <button id="generateQuiz">Generate Quiz!</button>
+      </div>
+    </div>
+    <footer>
+      <span class="footer"
+        >Developed With ❤️ By <a href="#">Krish Jotaniya</a></span
+      >
+    </footer>
+    <script src="index.js"></script>
+  </body>
+</html>

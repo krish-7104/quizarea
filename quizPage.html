@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quizarea</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="stylesheet" href="quizPage.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="name">
+        <p id="playerName" class="titleSec">player:</p>
+        <p>QuizArea | Play Amazing Quizzess</p>
+        <p id="score" class="titleSec">Score:</p>
+      </div>
+    </nav>
+    <div class="container">
+      <section id="quizStart">
+        <div id="title"></div>
+        <div id="description"></div>
+        <div id="startBtn"><button>Start Quiz!</button></div>
+      </section>
+      <section id="quizShow">
+        <div id="questionSec">
+          <p id="quesNo">Question NO 1</p>
+          <br />
+          <p id="questionName">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste,
+            necessitatibus.
+          </p>
+        </div>
+        <div class="time"></div>
+        <div class="options">
+          <span class="op" id="op1">Lorem ipsum dolor sit.</span>
+          <span class="op" id="op2">Lorem ipsum dolor sit.</span>
+          <span class="op" id="op3">Lorem ipsum dolor sit.</span>
+          <span class="op" id="op4">Lorem ipsum dolor sit.</span>
+        </div>
+        <div class="scoreUpdate">
+          <p id="sampleText" class="sampleText">
+            +10 For Correct And -5 For Incorrect Answer
+          </p>
+          <p class="addScore" id="addScore">Hurray! Correct Answer +10</p>
+          <p class="removeScore" id="removeScore">Oops! InCorrect Answer -5</p>
+        </div>
+        <div class="buttons">
+          <button id="previous" class="navBtn">
+            <span class="material-symbols-outlined"> arrow_back_ios </span>
+          </button>
+          <button id="Submit">Submit Answer</button>
+          <button id="next" class="navBtn">
+            <span class="material-symbols-outlined"> arrow_forward_ios </span>
+          </button>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span class="footer"
+        >Developed With ❤️ By <a href="#">Krish Jotaniya</a></span
+      >
+    </footer>
+    <script src="quizPage.js"></script>
+  </body>
+</html>
