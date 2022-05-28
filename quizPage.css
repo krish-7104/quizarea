@@ -13,9 +13,6 @@ body {
   background-color: var(--bg-color);
   font-family: "Montserrat", sans-serif;
 }
-nav {
-  padding: 5px 0px;
-}
 button {
   background-color: black;
   border: none;
@@ -27,8 +24,7 @@ button {
   cursor: pointer;
 }
 .titleSec {
-  margin: 0px 15px;
-  width: 15%;
+  margin: 0px 20px;
   text-align: center;
 }
 button:hover {
@@ -40,15 +36,25 @@ button:hover {
   justify-content: center;
   align-items: center;
 }
+.titleMain {
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1.2px solid rgba(0, 0, 0, 0.797);
+}
+.titleMain p {
+  padding: 12px;
+  color: black;
+  letter-spacing: 2px;
+}
 .name {
   width: 100%;
-  padding: 10px;
+  padding: 10px 0px;
   font-weight: bold;
   letter-spacing: 1.5px;
   color: black;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1.2px solid rgba(0, 0, 0, 0.797);
 }
 #quizStart {
   background-color: white;
@@ -59,12 +65,13 @@ button:hover {
   align-items: center;
   flex-direction: column;
   border-radius: 6px;
-  margin-top: 22vh;
+  margin-top: 10vh;
 }
 #title {
   margin: 10px;
   font-size: 18px;
   font-weight: bolder;
+  text-align: center;
   letter-spacing: 2px;
   border-bottom: 2px solid black;
 }
@@ -108,6 +115,11 @@ li {
   font-weight: bolder;
   letter-spacing: 0.8px;
   word-spacing: 1.5px;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
 }
 #quesNo {
   margin: 5px 0px;
@@ -129,7 +141,7 @@ li {
   flex-wrap: wrap;
   padding: 20px;
   border-radius: 8px;
-  margin-top: 8vh;
+  margin-top: 2vh;
 }
 .options {
   display: grid;
@@ -159,6 +171,10 @@ li {
   background-color: black;
   color: white;
   transition: 0.4s;
+}
+.selected {
+  background-color: black;
+  color: white;
 }
 #op1 {
   grid-area: 1 / 1 / 2 / 2;
@@ -239,5 +255,69 @@ footer {
   }
   100% {
     opacity: 1;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .titleMain {
+    font-size: 18px;
+  }
+  .name {
+    font-size: 12px;
+  }
+  .titleSec {
+    padding: 0px;
+    margin: 5px 10px;
+  }
+  #quizStart {
+    margin-top: 13vh;
+    width: 90%;
+  }
+  #title {
+    font-size: 15px;
+  }
+  #rules {
+    font-size: 10px;
+  }
+  li {
+    font-size: 10px;
+  }
+  #startBtn {
+    font-size: 15px;
+  }
+  #quizShow {
+    width: 90%;
+    margin-top: 2vh;
+    padding: 10px;
+  }
+  #quesNo {
+    font-size: 8px;
+  }
+  .options {
+    padding: 4px;
+  }
+  #questionName {
+    text-transform: capitalize;
+    letter-spacing: 1.5px;
+    word-spacing: 1.5px;
+    font-size: 14px;
+    padding: 10px;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+  }
+  .op {
+    padding: 5px;
+    height: 8vh;
+    font-size: 10px;
+  }
+  #sampleText {
+    font-size: 8.5px;
+  }
+  .buttons {
+    justify-content: space-between;
+  }
+  #Submit {
+    width: 50%;
+    font-size: 12px;
   }
 }

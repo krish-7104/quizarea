@@ -13,9 +13,11 @@
   </head>
   <body>
     <nav>
+      <div class="titleMain">
+        <p>QuizArea</p>
+      </div>
       <div class="name">
         <p id="playerName" class="titleSec">player:</p>
-        <p>QuizArea | Play Amazing Quizzess</p>
         <p id="score" class="titleSec">Score:</p>
       </div>
     </nav>
@@ -49,11 +51,11 @@
           <p class="removeScore" id="removeScore">Oops! InCorrect Answer -5</p>
         </div>
         <div class="buttons">
-          <button id="previous" class="navBtn">
+          <button id="previous" class="navBtn" onclick="previousBtnClick()">
             <span class="material-symbols-outlined"> arrow_back_ios </span>
           </button>
           <button id="Submit">Submit Answer</button>
-          <button id="next" class="navBtn">
+          <button id="next" class="navBtn" onclick="nextBtnClick()">
             <span class="material-symbols-outlined"> arrow_forward_ios </span>
           </button>
         </div>

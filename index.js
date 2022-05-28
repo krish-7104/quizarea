@@ -49,8 +49,8 @@ button.addEventListener("click", () => {
     CatId: category,
     CatName: CatName,
     Diff: difficulty,
-    Name: playerName,
   };
   localStorage.setItem("apiKey", JSON.stringify(api));
+  localStorage.setItem("name", playerName);
   window.location.replace("quizPage.html");
 });
