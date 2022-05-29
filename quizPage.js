@@ -11,7 +11,7 @@ var correctAns = "";
 const api = `https://opentdb.com/api.php?amount=${Questions}&category=${categoryId}&difficulty=${Difficulty}&type=multiple`;
 var currentScore = 0;
 var submitClickCount = 0;
-var userAnsweredQuestions = [];
+var userAnsweredQuestions = {};
 var userAnsweredQuestionsId = [];
 scoreAndName();
 instructWindow();
@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const nextBtn = document.getElementById("next");
     nextBtn.style.color = "white";
   }
+  questionAnsweredValidate();
 });
 
 //displaying score and username
@@ -40,7 +41,7 @@ function scoreAndName() {
   }
   let userName = document.getElementById("playerName");
   userName.innerHTML = `Player: ${playerName}`;
-  localStorage.removeItem("apiKey");
+  // localStorage.removeItem("apiKey");
 }
 
 //calling quiz form server
@@ -133,6 +134,7 @@ function nextBtnClick() {
   let queNo = document.getElementById("quesNo");
   queNo.innerText = `Question no ${que}`;
   hideText();
+  questionAnsweredValidate();
 }
 
 function previousBtnClick() {
@@ -166,6 +168,7 @@ function previousBtnClick() {
   let queNo = document.getElementById("quesNo");
   queNo.innerText = `Question no ${que}`;
   hideText();
+  questionAnsweredValidate();
 }
 function highlightSelected(id) {
   document.getElementById(id).classList.add("selected");
@@ -216,7 +219,6 @@ function checkAns() {
           element.classList.add("correct");
         }
       });
-      //   quizQuestionShow(allQuizData);
       localStorage.setItem("score", parseInt(currentScore));
       scoreAndName();
       userAnsweredData();
@@ -237,24 +239,69 @@ function hideText() {
   Sampletext.style.display = "block";
   success.style.display = "none";
   error.style.display = "none";
+  let subBtn = document.getElementById("Submit");
+  subBtn.removeAttribute("disabled");
 }
 function userAnsweredData() {
   let userQue = document.getElementById("questionName").innerText;
-  let userOptions = [
-    document.getElementById("op1").innerText,
-    document.getElementById("op2").innerText,
-    document.getElementById("op3").innerText,
-    document.getElementById("op4").innerText,
-  ];
-  userAnsweredQuestions.push([
-    document.getElementById("quesNo").innerText.slice(12),
-    userQue,
-    userOptions,
-    correctAns.toUpperCase(),
-    selectedAns,
-  ]);
-  userAnsweredQuestionsId.push(
-    document.getElementById("quesNo").innerText.slice(12)
-  );
-  console.log(userAnsweredQuestions);
+  let o1 = document.getElementById("op1").innerText;
+  let o2 = document.getElementById("op2").innerText;
+  let o3 = document.getElementById("op3").innerText;
+  let o4 = document.getElementById("op4").innerText;
+  userAnsweredQuestions[que] = {
+    que: userQue,
+    op1: o1,
+    op2: o2,
+    op3: o3,
+    op4: o4,
+    correct: correctAns,
+    selected: selectedAns,
+  };
+}
+
+function questionAnsweredValidate() {
+  for (queId in userAnsweredQuestions) {
+    if (queId == que) {
+      document.getElementById("op1").innerText =
+        userAnsweredQuestions[queId]["op1"];
+      document.getElementById("op2").innerText =
+        userAnsweredQuestions[queId]["op2"];
+      document.getElementById("op3").innerText =
+        userAnsweredQuestions[queId]["op3"];
+      document.getElementById("op4").innerText =
+        userAnsweredQuestions[queId]["op4"];
+      let optList = document.querySelectorAll(".op");
+      optList.forEach((element) => {
+        if (
+          element.innerText == userAnsweredQuestions[queId]["selected"] &&
+          element.innerText ==
+            userAnsweredQuestions[queId]["correct"].toUpperCase()
+        ) {
+          element.classList.add("correct");
+          let Sampletext = document.getElementById("sampleText");
+          Sampletext.innerText = "YOU HAVE ALREADY ATTEMPTED THE QUESTION";
+          let subBtn = document.getElementById("Submit");
+          subBtn.setAttribute("disabled", "true");
+        } else {
+          if (element.innerText == userAnsweredQuestions[queId]["selected"]) {
+            element.classList.add("incorrect");
+            let Sampletext = document.getElementById("sampleText");
+            Sampletext.innerText = "YOU HAVE ALREADY ATTEMPTED THE QUESTION";
+            let subBtn = document.getElementById("Submit");
+            subBtn.setAttribute("disabled", "true");
+          }
+          if (
+            element.innerText ==
+            userAnsweredQuestions[queId]["correct"].toUpperCase()
+          ) {
+            element.classList.add("correct");
+            let Sampletext = document.getElementById("sampleText");
+            Sampletext.innerText = "YOU HAVE ALREADY ATTEMPTED THE QUESTION";
+            let subBtn = document.getElementById("Submit");
+            subBtn.setAttribute("disabled", "true");
+          }
+        }
+      });
+    }
+  }
 }
