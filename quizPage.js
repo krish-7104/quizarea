@@ -11,6 +11,8 @@ var correctAns = "";
 const api = `https://opentdb.com/api.php?amount=${Questions}&category=${categoryId}&difficulty=${Difficulty}&type=multiple`;
 var currentScore = 0;
 var submitClickCount = 0;
+var userAnsweredQuestions = {};
+var userAnsweredQuestionsId = [];
 scoreAndName();
 instructWindow();
 
@@ -86,14 +88,21 @@ function quizQuestionShow(data) {
   let op3 = document.getElementById("op3");
   let op4 = document.getElementById("op4");
   queShow.innerHTML = data[que - 1].question;
-  op1.innerHTML = data[que - 1].incorrect_answers[0];
-  op2.innerHTML = data[que - 1].incorrect_answers[1];
-  op3.innerHTML = data[que - 1].incorrect_answers[2];
-  op4.innerHTML = data[que - 1].correct_answer;
+  let options = [];
+  data[que - 1].incorrect_answers.forEach((option) => {
+    options.push(option);
+  });
+  options.push(data[que - 1].correct_answer);
+  options.sort(() => Math.random() - 0.5);
+  op1.innerHTML = options[0];
+  op2.innerHTML = options[1];
+  op3.innerHTML = options[2];
+  op4.innerHTML = options[3];
   correctAns = data[que - 1].correct_answer;
 }
 
 function nextBtnClick() {
+  selectedAns = "";
   let hoverBtns = document.querySelectorAll(".op");
   hoverBtns.forEach((element) => {
     element.classList.remove("noHover");
@@ -122,6 +131,7 @@ function nextBtnClick() {
 }
 
 function previousBtnClick() {
+  selectedAns = "";
   let hoverBtns = document.querySelectorAll(".op");
   hoverBtns.forEach((element) => {
     element.classList.remove("noHover");
@@ -158,28 +168,32 @@ function highlightSelected(id) {
   });
 }
 function checkAns() {
-  let hoverBtns = document.querySelectorAll(".op");
-  hoverBtns.forEach((element) => {
-    element.classList.add("noHover");
-  });
-  submitClickCount++;
-  if (submitClickCount == 1) {
-    if (selectedAns.toLowerCase() == HTMLDecode(correctAns).toLowerCase()) {
-      currentScore += 10;
-      let success = document.getElementById("addScore");
-      let Sampletext = document.getElementById("sampleText");
-      Sampletext.style.display = "none";
-      success.style.display = "block";
-    } else {
-      currentScore -= 5;
-      let error = document.getElementById("removeScore");
-      let Sampletext = document.getElementById("sampleText");
-      Sampletext.style.display = "none";
-      error.style.display = "block";
+  if (selectedAns != "") {
+    let hoverBtns = document.querySelectorAll(".op");
+    hoverBtns.forEach((element) => {
+      element.classList.add("noHover");
+    });
+    submitClickCount++;
+    if (submitClickCount == 1) {
+      if (selectedAns.toLowerCase() == HTMLDecode(correctAns).toLowerCase()) {
+        currentScore += 10;
+        let success = document.getElementById("addScore");
+        let Sampletext = document.getElementById("sampleText");
+        Sampletext.style.display = "none";
+        success.style.display = "block";
+      } else {
+        currentScore -= 5;
+        let error = document.getElementById("removeScore");
+        let Sampletext = document.getElementById("sampleText");
+        Sampletext.style.display = "none";
+        error.style.display = "block";
+      }
+      //   quizQuestionShow(allQuizData);
+      localStorage.setItem("score", parseInt(currentScore));
+      scoreAndName();
+      userAnsweredData();
+      selectedAns = "";
     }
-    quizQuestionShow(allQuizData);
-    localStorage.setItem("score", parseInt(currentScore));
-    scoreAndName();
   }
 }
 
@@ -195,4 +209,14 @@ function hideText() {
   Sampletext.style.display = "block";
   success.style.display = "none";
   error.style.display = "none";
+}
+function userAnsweredData() {
+  let userQue = document.getElementById("questionName").innerText;
+  let userOptions = [
+    document.getElementById("op1").innerText,
+    document.getElementById("op2").innerText,
+    document.getElementById("op3").innerText,
+    document.getElementById("op4").innerText,
+  ];
+  userAnsweredQuestionsId = document.getElementById("quesNo");
 }
