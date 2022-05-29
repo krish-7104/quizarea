@@ -3,6 +3,11 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 :root {
   --bg-color: #90a9b7;

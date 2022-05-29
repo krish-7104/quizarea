@@ -52,5 +52,5 @@ button.addEventListener("click", () => {
   };
   localStorage.setItem("apiKey", JSON.stringify(api));
   localStorage.setItem("name", playerName);
-  window.location.replace("quizPage.html");
+  window.open("quizPage.html", "_self");
 });

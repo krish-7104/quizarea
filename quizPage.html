@@ -38,10 +38,18 @@
         </div>
         <div class="time"></div>
         <div class="options">
-          <span class="op" id="op1">Lorem ipsum dolor sit.</span>
-          <span class="op" id="op2">Lorem ipsum dolor sit.</span>
-          <span class="op" id="op3">Lorem ipsum dolor sit.</span>
-          <span class="op" id="op4">Lorem ipsum dolor sit.</span>
+          <span class="op" onclick="highlightSelected(this.id)" id="op1"
+            >Lorem ipsum dolor sit.</span
+          >
+          <span class="op" onclick="highlightSelected(this.id)" id="op2"
+            >Lorem ipsum dolor sit.</span
+          >
+          <span class="op" onclick="highlightSelected(this.id)" id="op3"
+            >Lorem ipsum dolor sit.</span
+          >
+          <span class="op" onclick="highlightSelected(this.id)" id="op4"
+            >Lorem ipsum dolor sit.</span
+          >
         </div>
         <div class="scoreUpdate">
           <p id="sampleText" class="sampleText">
@@ -54,7 +62,7 @@
           <button id="previous" class="navBtn" onclick="previousBtnClick()">
             <span class="material-symbols-outlined"> arrow_back_ios </span>
           </button>
-          <button id="Submit">Submit Answer</button>
+          <button id="Submit" onclick="checkAns()">Submit Answer</button>
           <button id="next" class="navBtn" onclick="nextBtnClick()">
             <span class="material-symbols-outlined"> arrow_forward_ios </span>
           </button>

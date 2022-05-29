@@ -6,8 +6,11 @@ const categoryName = apiDataJson.CatName;
 const Questions = apiDataJson.Ques;
 const Difficulty = apiDataJson.Diff;
 var que = 1; //calculating question count
+var selectedAns = "";
+var correctAns = "";
 const api = `https://opentdb.com/api.php?amount=${Questions}&category=${categoryId}&difficulty=${Difficulty}&type=multiple`;
-
+var currentScore = 0;
+var submitClickCount = 0;
 scoreAndName();
 instructWindow();
 
@@ -31,6 +34,7 @@ function scoreAndName() {
     localStorage.setItem("score", 0);
   } else {
     scoreDisplay.innerHTML = `Score: ${score}`;
+    currentScore = parseInt(score);
   }
   let userName = document.getElementById("playerName");
   userName.innerHTML = `Player: ${playerName}`;
@@ -38,13 +42,18 @@ function scoreAndName() {
 }
 
 //calling quiz form server
+
 fetch(api)
   .then((response) => {
     return response.json();
   })
   .then((data) => {
-    allQuizData = data.results;
-    quizQuestionShow(allQuizData);
+    if (data.response_code === 0) {
+      allQuizData = data.results;
+      quizQuestionShow(allQuizData);
+    } else {
+      alert("Error Try Another Quiz");
+    }
   });
 
 //start window close and displaying rules
@@ -81,9 +90,20 @@ function quizQuestionShow(data) {
   op2.innerHTML = data[que - 1].incorrect_answers[1];
   op3.innerHTML = data[que - 1].incorrect_answers[2];
   op4.innerHTML = data[que - 1].correct_answer;
+  correctAns = data[que - 1].correct_answer;
 }
 
 function nextBtnClick() {
+  let hoverBtns = document.querySelectorAll(".op");
+  hoverBtns.forEach((element) => {
+    element.classList.remove("noHover");
+  });
+  allOpt.forEach((element) => {
+    element.classList.remove("selected");
+  });
+  submitClickCount = 0;
+  selectedCount = 0;
+
   if (que < Questions) {
     que++;
   }
@@ -98,9 +118,19 @@ function nextBtnClick() {
   }
   let queNo = document.getElementById("quesNo");
   queNo.innerText = `Question no ${que}`;
+  hideText();
 }
 
 function previousBtnClick() {
+  let hoverBtns = document.querySelectorAll(".op");
+  hoverBtns.forEach((element) => {
+    element.classList.remove("noHover");
+  });
+  allOpt.forEach((element) => {
+    element.classList.remove("selected");
+  });
+  submitClickCount = 0;
+  selectedCount = 0;
   if (que != 1) {
     que--;
   }
@@ -115,4 +145,54 @@ function previousBtnClick() {
   }
   let queNo = document.getElementById("quesNo");
   queNo.innerText = `Question no ${que}`;
+  hideText();
+}
+function highlightSelected(id) {
+  document.getElementById(id).classList.add("selected");
+  allOpt = document.querySelectorAll("span.op");
+  selectedAns = document.getElementById(id).innerText;
+  allOpt.forEach((element) => {
+    if (element.id != id) {
+      element.classList.remove("selected");
+    }
+  });
+}
+function checkAns() {
+  let hoverBtns = document.querySelectorAll(".op");
+  hoverBtns.forEach((element) => {
+    element.classList.add("noHover");
+  });
+  submitClickCount++;
+  if (submitClickCount == 1) {
+    if (selectedAns.toLowerCase() == HTMLDecode(correctAns).toLowerCase()) {
+      currentScore += 10;
+      let success = document.getElementById("addScore");
+      let Sampletext = document.getElementById("sampleText");
+      Sampletext.style.display = "none";
+      success.style.display = "block";
+    } else {
+      currentScore -= 5;
+      let error = document.getElementById("removeScore");
+      let Sampletext = document.getElementById("sampleText");
+      Sampletext.style.display = "none";
+      error.style.display = "block";
+    }
+    quizQuestionShow(allQuizData);
+    localStorage.setItem("score", parseInt(currentScore));
+    scoreAndName();
+  }
+}
+
+function HTMLDecode(textString) {
+  let doc = new DOMParser().parseFromString(textString, "text/html");
+  return doc.documentElement.textContent;
+}
+
+function hideText() {
+  let error = document.getElementById("removeScore");
+  let Sampletext = document.getElementById("sampleText");
+  let success = document.getElementById("addScore");
+  Sampletext.style.display = "block";
+  success.style.display = "none";
+  error.style.display = "none";
 }

@@ -4,6 +4,11 @@
   padding: 0px;
   box-sizing: border-box;
   text-transform: uppercase;
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 :root {
   --bg-color: #90a9b7;
@@ -172,6 +177,9 @@ li {
   color: white;
   transition: 0.4s;
 }
+.noHover {
+  pointer-events: none;
+}
 .selected {
   background-color: black;
   color: white;
@@ -245,9 +253,15 @@ footer {
 }
 .removeScore {
   color: red;
+  animation: fadeInAnimation ease 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 .addScore {
   color: rgb(1, 97, 1);
+  animation: fadeInAnimation ease 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 @keyframes fadeInAnimation {
   0% {
