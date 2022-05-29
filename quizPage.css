@@ -172,11 +172,11 @@ li {
   justify-content: center;
   align-items: center;
 }
-.op:hover {
+/* .op:hover {
   background-color: black;
   color: white;
   transition: 0.4s;
-}
+} */
 .noHover {
   pointer-events: none;
 }
@@ -213,6 +213,16 @@ li {
 .navBtn:hover {
   background-color: white;
   color: rgba(0, 0, 0, 0.833);
+}
+.correct {
+  background-color: green;
+  color: white;
+  border: 1.2px solid green;
+}
+.incorrect {
+  background-color: red;
+  color: white;
+  border: 1.2px solid red;
 }
 footer {
   position: fixed;

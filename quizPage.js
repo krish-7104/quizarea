@@ -11,7 +11,7 @@ var correctAns = "";
 const api = `https://opentdb.com/api.php?amount=${Questions}&category=${categoryId}&difficulty=${Difficulty}&type=multiple`;
 var currentScore = 0;
 var submitClickCount = 0;
-var userAnsweredQuestions = {};
+var userAnsweredQuestions = [];
 var userAnsweredQuestionsId = [];
 scoreAndName();
 instructWindow();
@@ -40,7 +40,7 @@ function scoreAndName() {
   }
   let userName = document.getElementById("playerName");
   userName.innerHTML = `Player: ${playerName}`;
-  // localStorage.removeItem("apiKey");
+  localStorage.removeItem("apiKey");
 }
 
 //calling quiz form server
@@ -102,6 +102,11 @@ function quizQuestionShow(data) {
 }
 
 function nextBtnClick() {
+  let optList = document.querySelectorAll(".op");
+  optList.forEach((element) => {
+    element.classList.remove("correct");
+    element.classList.remove("incorrect");
+  });
   selectedAns = "";
   let hoverBtns = document.querySelectorAll(".op");
   hoverBtns.forEach((element) => {
@@ -131,6 +136,11 @@ function nextBtnClick() {
 }
 
 function previousBtnClick() {
+  let optList = document.querySelectorAll(".op");
+  optList.forEach((element) => {
+    element.classList.remove("correct");
+    element.classList.remove("incorrect");
+  });
   selectedAns = "";
   let hoverBtns = document.querySelectorAll(".op");
   hoverBtns.forEach((element) => {
@@ -186,8 +196,26 @@ function checkAns() {
         let error = document.getElementById("removeScore");
         let Sampletext = document.getElementById("sampleText");
         Sampletext.style.display = "none";
+        let optList = document.querySelectorAll(".op");
+        optList.forEach((element) => {
+          if (
+            selectedAns.toLowerCase() ==
+            HTMLDecode(element.innerHTML).toLowerCase()
+          ) {
+            element.classList.add("incorrect");
+          }
+        });
         error.style.display = "block";
       }
+      let optList = document.querySelectorAll(".op");
+      optList.forEach((element) => {
+        if (
+          element.innerText.toLowerCase() ==
+          HTMLDecode(correctAns).toLowerCase()
+        ) {
+          element.classList.add("correct");
+        }
+      });
       //   quizQuestionShow(allQuizData);
       localStorage.setItem("score", parseInt(currentScore));
       scoreAndName();
@@ -218,5 +246,15 @@ function userAnsweredData() {
     document.getElementById("op3").innerText,
     document.getElementById("op4").innerText,
   ];
-  userAnsweredQuestionsId = document.getElementById("quesNo");
+  userAnsweredQuestions.push([
+    document.getElementById("quesNo").innerText.slice(12),
+    userQue,
+    userOptions,
+    correctAns.toUpperCase(),
+    selectedAns,
+  ]);
+  userAnsweredQuestionsId.push(
+    document.getElementById("quesNo").innerText.slice(12)
+  );
+  console.log(userAnsweredQuestions);
 }
