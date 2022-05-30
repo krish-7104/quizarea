@@ -124,19 +124,31 @@ ele.addEventListener("click", () => {
     hard = JSON.parse(this.responseText).category_question_count
       .total_hard_question_count;
     if (document.getElementById("difficulty").value == "easy") {
-      document.getElementById(
-        "noQUE"
-      ).innerHTML = ` No Of Question (1-${easy}) `;
+      if (easy <= 50) {
+        document.getElementById(
+          "noQUE"
+        ).innerHTML = ` No Of Question (1-${easy}) `;
+      } else {
+        document.getElementById("noQUE").innerHTML = ` No Of Question (1-50) `;
+      }
     }
     if (document.getElementById("difficulty").value == "medium") {
-      document.getElementById(
-        "noQUE"
-      ).innerHTML = ` No Of Question (1-${medium}) `;
+      if (medium <= 50) {
+        document.getElementById(
+          "noQUE"
+        ).innerHTML = ` No Of Question (1-${medium}) `;
+      } else {
+        document.getElementById("noQUE").innerHTML = ` No Of Question (1-50) `;
+      }
     }
     if (document.getElementById("difficulty").value == "hard") {
-      document.getElementById(
-        "noQUE"
-      ).innerHTML = ` No Of Question (1-${hard}) `;
+      if (hard <= 50) {
+        document.getElementById(
+          "noQUE"
+        ).innerHTML = ` No Of Question (1-${hard}) `;
+      } else {
+        document.getElementById("noQUE").innerHTML = ` No Of Question (1-50) `;
+      }
     }
   };
   xhr.send();

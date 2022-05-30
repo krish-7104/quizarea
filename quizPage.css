@@ -212,7 +212,6 @@ li {
   grid-area: 2 / 2 / 3 / 3;
 }
 .buttons {
-  /* border-top: 1.2px solid rgba(0, 0, 0, 0.79); */
   padding: 10px;
   display: flex;
   justify-content: space-around;
@@ -281,6 +280,9 @@ footer {
   animation: fadeInAnimation ease 1.5s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+}
+#score {
+  transition: 0.8;
 }
 .addScore {
   color: rgb(1, 97, 1);

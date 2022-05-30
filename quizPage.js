@@ -31,14 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //displaying score and username
 function scoreAndName() {
   let scoreDisplay = document.getElementById("score");
-  let score = localStorage.getItem("score");
-  if (score == null) {
-    scoreDisplay.innerHTML = `Score: 0`;
-    localStorage.setItem("score", 0);
-  } else {
-    scoreDisplay.innerHTML = `Score: ${score}`;
-    currentScore = parseInt(score);
-  }
+  scoreDisplay.innerHTML = `Score: ${currentScore}`;
   let userName = document.getElementById("playerName");
   userName.innerHTML = `Player: ${playerName}`;
   // localStorage.removeItem("apiKey");
