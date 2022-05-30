@@ -153,7 +153,8 @@ li {
   padding: 5px;
   float: left;
 }
-#quizShow {
+#quizShow,
+#resultShow {
   display: none;
   background-color: white;
   width: 65%;
@@ -165,6 +166,9 @@ li {
   border-radius: 8px;
   margin-top: 2vh;
   font-family: "Poppins", sans-serif;
+  animation: fadeInAnimation ease 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 .options {
   display: grid;
@@ -293,6 +297,35 @@ footer {
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
+h3 {
+  text-align: center;
+  letter-spacing: 1.5px;
+  padding: 10px;
+  margin: 10px 5px;
+  font-family: "Montserrat", sans-serif;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+}
+.textView {
+  border: 1.5px solid black;
+  padding: 5px;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  margin: 10px;
+}
+.textView {
+  color: white;
+  border-radius: 4px;
+  background-color: black;
+  animation: fadeInAnimation ease 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.textView p {
+  padding: 2px;
+}
+
 @keyframes fadeInAnimation {
   0% {
     opacity: 0;
@@ -331,7 +364,8 @@ footer {
   #startBtn {
     font-size: 15px;
   }
-  #quizShow {
+  #quizShow,
+  #resultShow {
     width: 90%;
     margin-top: 2vh;
     padding: 10px;
@@ -355,7 +389,7 @@ footer {
   .op {
     padding: 5px;
     height: 8vh;
-    font-size: 9px;
+    font-size: 10px;
   }
   #sampleText {
     font-size: 8.5px;
@@ -369,5 +403,11 @@ footer {
   }
   .footer {
     font-size: 10px;
+  }
+  #resultShow #questionName {
+    height: auto;
+  }
+  h3 {
+    font-size: 12px;
   }
 }

@@ -31,7 +31,7 @@
       <section id="quizShow">
         <div id="questionSec">
           <p id="quesNo">Question NO 1</p>
-          <button id="cancelQuiz" title="Cancel Quiz">
+          <button id="cancelQuiz" title="Cancel Quiz" onclick="closeBtnClick()">
             <span class="material-symbols-outlined quizBTN"> close </span>
           </button>
           <br />
@@ -40,7 +40,6 @@
             necessitatibus.
           </p>
         </div>
-        <div class="time"></div>
         <div class="options">
           <span class="op" onclick="highlightSelected(this.id)" id="op1"
             >Lorem ipsum dolor sit.</span
@@ -82,9 +81,10 @@
           </button>
         </div>
       </section>
+      <section id="resultShow"></section>
     </div>
     <footer>
-      <span class="footer"
+      <span class="footer" id="footer"
         >Developed With ❤️ By <a href="#">Krish Jotaniya</a></span
       >
     </footer>

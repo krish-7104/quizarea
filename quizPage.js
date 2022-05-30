@@ -49,7 +49,8 @@ fetch(api)
       allQuizData = data.results;
       quizQuestionShow(allQuizData);
     } else {
-      alert("Error Try Another Quiz");
+      alert("Unable To Get Quiz For This Category, Try Another");
+      window.open("index.html", "_self");
     }
   });
 
@@ -298,5 +299,55 @@ function questionAnsweredValidate() {
         }
       });
     }
+  }
+}
+var flag = 0;
+function resultDisplay() {
+  let displayArea = document.getElementById("resultShow");
+  displayArea.style.display = "block";
+  if (Object.keys(userAnsweredQuestions).length === 0) {
+    window.open("index.html", "_self");
+  } else {
+    html = "<h3>Attempted Questions!</h3>";
+    for (element in userAnsweredQuestions) {
+      html += `<div id="questionSec">
+      <p id="quesNo">Question NO ${element}</p>
+      <br />
+      <p id="questionName">
+      ${userAnsweredQuestions[element]["que"]}
+      </p>
+    </div>
+    <div class="options">
+      <span class="op" onclick="highlightSelected(this.id)" id="op1"
+        >${userAnsweredQuestions[element]["op1"]}</span
+      >
+      <span class="op" onclick="highlightSelected(this.id)" id="op2"
+        >${userAnsweredQuestions[element]["op2"]}</span
+      >
+      <span class="op" onclick="highlightSelected(this.id)" id="op3"
+        >${userAnsweredQuestions[element]["op3"]}</span
+      >
+      <span class="op" onclick="highlightSelected(this.id)" id="op4"
+        >${userAnsweredQuestions[element]["op4"]}</span
+      >
+
+    </div>
+    <div class="textView">
+    <p class="text"><b>Correct Answer:</b> <span id="correctSpan">${userAnsweredQuestions[element]["correct"]}</span></p>
+    <p class="text"><b>You Selected:</b> <span id="selectedSpan">${userAnsweredQuestions[element]["selected"]}</span></p>
+ </div> 
+    <hr>
+    `;
+    }
+    displayArea.innerHTML = html;
+    let fot = document.querySelector("footer");
+    fot.style.position = "relative";
+  }
+}
+
+function closeBtnClick() {
+  if (confirm("Do You Want To Go To Result?") == true) {
+    resultDisplay();
+    document.getElementById("quizShow").style.display = "none";
   }
 }
