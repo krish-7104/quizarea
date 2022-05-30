@@ -315,9 +315,10 @@ h3 {
   margin: 10px;
 }
 .textView {
-  color: white;
+  color: black;
   border-radius: 4px;
-  background-color: black;
+  background-color: var(--bg-color);
+  border: none;
   animation: fadeInAnimation ease 1.5s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
@@ -325,7 +326,14 @@ h3 {
 .textView p {
   padding: 2px;
 }
-
+#playAnother {
+  margin: 10px auto;
+}
+.playBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @keyframes fadeInAnimation {
   0% {
     opacity: 0;
@@ -409,5 +417,8 @@ h3 {
   }
   h3 {
     font-size: 12px;
+  }
+  .textView {
+    font-size: 10px;
   }
 }

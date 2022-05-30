@@ -305,10 +305,11 @@ var flag = 0;
 function resultDisplay() {
   let displayArea = document.getElementById("resultShow");
   displayArea.style.display = "block";
+
   if (Object.keys(userAnsweredQuestions).length === 0) {
     window.open("index.html", "_self");
   } else {
-    html = "<h3>Attempted Questions!</h3>";
+    html = `<h3>Attempted Questions! | You Score : ${currentScore}</h3>`;
     for (element in userAnsweredQuestions) {
       html += `<div id="questionSec">
       <p id="quesNo">Question NO ${element}</p>
@@ -339,10 +340,15 @@ function resultDisplay() {
     <hr>
     `;
     }
+    html += `<div class="playBtn"><button id = "playAnother" onclick="playQuiz()">Play Another Quiz</button></div>`;
     displayArea.innerHTML = html;
     let fot = document.querySelector("footer");
     fot.style.position = "relative";
   }
+}
+
+function playQuiz() {
+  window.open("index.html", "_self");
 }
 
 function closeBtnClick() {
