@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 * {
   margin: 0px;
   padding: 0px;
@@ -108,16 +109,16 @@ li {
   width: 100%;
   padding: 10px;
 }
-#quesNo {
-  float: left;
-}
 #cancelQuiz {
   float: right;
   font-size: 12px;
   padding: 5px;
   margin: 0px;
   background-color: white;
-  color: rgba(255, 0, 0, 0.653);
+  color: black;
+}
+.material-symbols-outlined {
+  font-size: 30px;
 }
 #cancelQuiz:hover {
   color: red;
@@ -143,13 +144,14 @@ li {
 }
 #quesNo {
   margin: 5px 0px;
-  font-size: 10px;
+  font-size: 9.5px;
   letter-spacing: 1.5px;
   text-align: center;
   background-color: black;
   color: white;
   display: inline;
   padding: 5px;
+  float: left;
 }
 #quizShow {
   display: none;
@@ -162,6 +164,7 @@ li {
   padding: 20px;
   border-radius: 8px;
   margin-top: 2vh;
+  font-family: "Poppins", sans-serif;
 }
 .options {
   display: grid;
@@ -178,9 +181,9 @@ li {
   border: 1px solid black;
   margin: 10px;
   color: black;
-  font-weight: bold;
+  font-weight: 600;
   border-radius: 4px;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 1.2px;
   height: 10vh;
   display: flex;
@@ -313,6 +316,9 @@ footer {
     margin-top: 13vh;
     width: 90%;
   }
+  .material-symbols-outlined {
+    font-size: 22px;
+  }
   #title {
     font-size: 15px;
   }
@@ -349,7 +355,7 @@ footer {
   .op {
     padding: 5px;
     height: 8vh;
-    font-size: 10px;
+    font-size: 8.5px;
   }
   #sampleText {
     font-size: 8.5px;

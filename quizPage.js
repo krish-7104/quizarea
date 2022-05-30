@@ -13,6 +13,7 @@ var currentScore = 0;
 var submitClickCount = 0;
 var userAnsweredQuestions = {};
 var userAnsweredQuestionsId = [];
+var answeredLast = "";
 scoreAndName();
 instructWindow();
 var allOpt = document.querySelectorAll("span.op");
@@ -213,7 +214,6 @@ function checkAns() {
           element.classList.add("correct");
         }
       });
-      localStorage.setItem("score", parseInt(currentScore));
       scoreAndName();
       userAnsweredData();
       selectedAns = "";
@@ -231,6 +231,7 @@ function hideText() {
   let Sampletext = document.getElementById("sampleText");
   let success = document.getElementById("addScore");
   Sampletext.style.display = "block";
+  Sampletext.innerText = "+10 For Correct And -5 For Incorrect Answer";
   success.style.display = "none";
   error.style.display = "none";
   let subBtn = document.getElementById("Submit");
