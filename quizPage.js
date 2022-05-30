@@ -15,7 +15,7 @@ var userAnsweredQuestions = {};
 var userAnsweredQuestionsId = [];
 scoreAndName();
 instructWindow();
-
+var allOpt = document.querySelectorAll("span.op");
 document.addEventListener("DOMContentLoaded", () => {
   if (que == 1) {
     const previouBtn = document.getElementById("previous");
@@ -156,6 +156,7 @@ function previousBtnClick() {
   if (que != 1) {
     que--;
   }
+
   quizQuestionShow(allQuizData);
   if (que == 1) {
     const previouBtn = document.getElementById("previous");

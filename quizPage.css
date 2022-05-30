@@ -108,6 +108,21 @@ li {
   width: 100%;
   padding: 10px;
 }
+#quesNo {
+  float: left;
+}
+#cancelQuiz {
+  float: right;
+  font-size: 12px;
+  padding: 5px;
+  margin: 0px;
+  background-color: white;
+  color: rgba(255, 0, 0, 0.653);
+}
+#cancelQuiz:hover {
+  color: red;
+  transition: 0.5s;
+}
 #rules p {
   padding: 5px 10px;
   display: inline;

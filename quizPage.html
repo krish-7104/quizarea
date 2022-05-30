@@ -30,6 +30,9 @@
       <section id="quizShow">
         <div id="questionSec">
           <p id="quesNo">Question NO 1</p>
+          <button id="cancelQuiz" title="Cancel Quiz">
+            <span class="material-symbols-outlined quizBTN"> close </span>
+          </button>
           <br />
           <p id="questionName">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste,
@@ -59,11 +62,21 @@
           <p class="removeScore" id="removeScore">Oops! InCorrect Answer -5</p>
         </div>
         <div class="buttons">
-          <button id="previous" class="navBtn" onclick="previousBtnClick()">
+          <button
+            id="previous"
+            class="navBtn"
+            onclick="previousBtnClick()"
+            title="Previous Question"
+          >
             <span class="material-symbols-outlined"> arrow_back_ios </span>
           </button>
           <button id="Submit" onclick="checkAns()">Submit Answer</button>
-          <button id="next" class="navBtn" onclick="nextBtnClick()">
+          <button
+            id="next"
+            class="navBtn"
+            onclick="nextBtnClick()"
+            title="Next Question"
+          >
             <span class="material-symbols-outlined"> arrow_forward_ios </span>
           </button>
         </div>
