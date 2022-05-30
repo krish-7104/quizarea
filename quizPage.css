@@ -355,7 +355,7 @@ footer {
   .op {
     padding: 5px;
     height: 8vh;
-    font-size: 8.5px;
+    font-size: 9px;
   }
   #sampleText {
     font-size: 8.5px;
@@ -366,5 +366,8 @@ footer {
   #Submit {
     width: 50%;
     font-size: 12px;
+  }
+  .footer {
+    font-size: 10px;
   }
 }
