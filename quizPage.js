@@ -36,13 +36,7 @@ function scoreAndName() {
   let userName = document.getElementById("playerName");
   userName.innerHTML = `Player: ${playerName}`;
 }
-(function () {
-  window.onpageshow = function (event) {
-    if (event.persisted) {
-      window.location.reload();
-    }
-  };
-})();
+
 //calling quiz form server
 fetch(api)
   .then((response) => {
