@@ -27,7 +27,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-top: 35vh;
+  padding-top: 30vh;
 }
 .welcome {
   text-transform: uppercase;
@@ -115,6 +115,9 @@ select {
   text-transform: uppercase;
   width: 70%;
 }
+img {
+  width: 60px;
+}
 label {
   font-size: 11px;
   text-transform: uppercase;
@@ -167,6 +170,9 @@ footer {
   }
   select {
     width: 85%;
+    font-size: 10px;
+  }
+  .footer {
     font-size: 10px;
   }
 }

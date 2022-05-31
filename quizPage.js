@@ -178,7 +178,7 @@ function checkAns() {
   if (selectedAns != "") {
     let hoverBtns = document.querySelectorAll(".op");
     hoverBtns.forEach((element) => {
-      element.classList.add("noHover");
+      // element.classList.add("noHover");
     });
     submitClickCount++;
     if (submitClickCount == 1) {
