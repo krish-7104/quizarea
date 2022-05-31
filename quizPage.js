@@ -35,11 +35,15 @@ function scoreAndName() {
   scoreDisplay.innerHTML = `Score: ${currentScore}`;
   let userName = document.getElementById("playerName");
   userName.innerHTML = `Player: ${playerName}`;
-  // localStorage.removeItem("apiKey");
 }
-
+(function () {
+  window.onpageshow = function (event) {
+    if (event.persisted) {
+      window.location.reload();
+    }
+  };
+})();
 //calling quiz form server
-
 fetch(api)
   .then((response) => {
     return response.json();
@@ -311,6 +315,10 @@ function resultDisplay() {
   } else {
     html = `<h3>Attempted Questions! | You Score : ${currentScore}</h3>`;
     for (element in userAnsweredQuestions) {
+      let o1 = userAnsweredQuestions[element]["op1"];
+      let o2 = userAnsweredQuestions[element]["op2"];
+      let o3 = userAnsweredQuestions[element]["op3"];
+      let o4 = userAnsweredQuestions[element]["op4"];
       html += `<div id="questionSec">
       <p id="quesNo">Question NO ${element}</p>
       <br />
@@ -320,18 +328,17 @@ function resultDisplay() {
     </div>
     <div class="options">
       <span class="op" onclick="highlightSelected(this.id)" id="op1"
-        >${userAnsweredQuestions[element]["op1"]}</span
+        >${o1}</span
       >
       <span class="op" onclick="highlightSelected(this.id)" id="op2"
-        >${userAnsweredQuestions[element]["op2"]}</span
+        >${o2}</span
       >
       <span class="op" onclick="highlightSelected(this.id)" id="op3"
-        >${userAnsweredQuestions[element]["op3"]}</span
+        >${o3}</span
       >
       <span class="op" onclick="highlightSelected(this.id)" id="op4"
-        >${userAnsweredQuestions[element]["op4"]}</span
+        >${o4}</span
       >
-
     </div>
     <div class="textView">
     <p class="text"><b>Correct Answer:</b> <span id="correctSpan">${userAnsweredQuestions[element]["correct"]}</span></p>

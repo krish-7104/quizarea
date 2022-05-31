@@ -107,6 +107,14 @@ button.addEventListener("click", () => {
   }
 });
 
+(function () {
+  window.onpageshow = function (event) {
+    if (event.persisted) {
+      window.location.reload();
+    }
+  };
+})();
+
 let ele = document.getElementById("difficulty");
 ele.addEventListener("click", () => {
   let category = document.getElementById("category").value;
